@@ -62,14 +62,5 @@ func GetAmiToken(resource string) (string, error)  {
 		return "", fmt.Errorf("unable to unmarshall response. Original error: %s", err)
 	}
 
-	//fmt.Println("Response status:", resp.Status)
-	//log.Println("access_token: ", r.AccessToken)
-	//fmt.Println("refresh_token: ", r.RefreshToken)
-	//fmt.Println("expires_in: ", r.ExpiresIn)
-	//fmt.Println("expires_on: ", r.ExpiresOn)
-	//fmt.Println("not_before: ", r.NotBefore)
-	//fmt.Println("resource: ", r.Resource)
-	//fmt.Println("token_type: ", r.TokenType)
-
 	return r.AccessToken, nil
 }
