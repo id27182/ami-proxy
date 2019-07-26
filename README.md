@@ -19,5 +19,3 @@ AMIPROXY_PROXY_DEST_RESOURCE - resource id or resource url of destination servic
 
 AMIPROXY_PROXY_BIND_PORT - port, on which proxy will listen for incoming http requests
 
-### CLI 
-Currently, tool have only one command: start. Also tool support "--debug" flag

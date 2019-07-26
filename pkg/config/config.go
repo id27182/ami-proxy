@@ -2,9 +2,9 @@ package config
 
 import (
 	"fmt"
+	"github.com/id27182/ami-proxy/pkg/env"
 	"github.com/spf13/viper"
 	"gopkg.in/go-playground/validator.v9"
-	"os"
 	"reflect"
 	"strings"
 )
@@ -25,14 +25,13 @@ func initConfig() error {
 	replacer := strings.NewReplacer(".", "_")
 	v.SetEnvKeyReplacer(replacer)
 
-
-	workingDir, err := os.Getwd()
+	confDir, err := env.GetExecutableDir()
 	if err != nil {
-		return fmt.Errorf("unable to get working directory. Original error: %s", err)
+		return fmt.Errorf("unable to determine configuration directory. Original error: %s", err)
 	}
 
 	v.SetConfigName(configurationFile)
-	v.AddConfigPath(workingDir)
+	v.AddConfigPath(confDir)
 
 	v.ReadInConfig()
 	config = v
