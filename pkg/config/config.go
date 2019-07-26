@@ -3,15 +3,13 @@ package config
 import (
 	"fmt"
 	"github.com/spf13/viper"
+	"gopkg.in/go-playground/validator.v9"
 	"os"
-	"path/filepath"
 	"reflect"
 	"strings"
-	"gopkg.in/go-playground/validator.v9"
 )
 
-const configurationFolder = "conf"
-const configurationFile = "ami-proxy.yaml"
+const configurationFile = "ami-proxy"
 var config *viper.Viper
 
 type Config struct {
@@ -33,12 +31,10 @@ func initConfig() error {
 		return fmt.Errorf("unable to get working directory. Original error: %s", err)
 	}
 
-	// configure viper to read configuration from file
-	p := filepath.Join(workingDir, configurationFolder)
 	v.SetConfigName(configurationFile)
-	v.AddConfigPath(p)
-	v.ReadInConfig()
+	v.AddConfigPath(workingDir)
 
+	v.ReadInConfig()
 	config = v
 	return nil
 }

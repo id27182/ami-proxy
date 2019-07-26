@@ -10,7 +10,7 @@ import (
 func Serve() error {
 	conf, err := config.GetConfig()
 	if err != nil {
-		return fmt.Errorf("unable to get config. Original error: %s")
+		return fmt.Errorf("unable to get config. Original error: %s", err)
 	}
 
 	proxyConfig, err := conf.Proxy()
